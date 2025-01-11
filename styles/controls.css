@@ -1,0 +1,199 @@
+/* Base Button Styles */
+button,
+.filter-btn,
+#invertTimeline,
+#zoomIn,
+#zoomOut,
+#resetTimeline {
+    font-family: 'Minecraft', sans-serif;
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    background-color: #333;
+    border: 2px solid #555;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Dropdown */
+.dropdown {
+    position: relative;
+    width: 200px; /* Match the search bar width */
+}
+
+.dropdown-header {
+    height: 32px; /* Match the search bar height */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    border: 2px solid #555;
+    color: #727272;
+    padding: 0 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    box-sizing: border-box; /* Ensure padding fits within the width */
+}
+
+.dropdown-header .label {
+    font-family: 'Minecraft', sans-serif;
+    font-size: 14px;
+}
+
+.dropdown-header .caret {
+    margin-left: auto;
+    transition: transform 0.2s ease;
+}
+
+.dropdown-header.active .caret {
+    transform: rotate(180deg); /* Rotate arrow when open */
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%; /* Match dropdown width to header */
+    background-color: #333;
+    border: 2px solid #555;
+    border-radius: 4px;
+    margin-top: 5px;
+    z-index: 1000;
+    max-height: 200px; /* Limit dropdown height */
+    overflow-y: auto; /* Add scrolling for long lists */
+    list-style: none; /* Remove default bullet points */
+    padding: 0; /* Remove default padding */
+}
+
+.dropdown-item {
+    padding: 8px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: left;
+    font-family: 'Minecraft', sans-serif;
+    font-size: 14px;
+}
+
+.dropdown-item:hover {
+    background-color: #444;
+}
+
+.dropdown-item.selected {
+    background-color: #292929; /* Highlight selected item */
+    border-left: 3px solid #1a1a1a;
+}
+
+
+#infoButton {
+    font-family: 'Minecraft', sans-serif;
+    width: 64px;
+    height: 32px;
+    font-size: 12px;
+    background-color: #333;
+    border: 2px solid #555;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Filter Buttons */
+.filter-btn {
+    width: auto;
+    padding: 8px 16px;
+}
+
+/* Controls Container */
+.controls {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 90;
+}
+
+/* Add new container for info and theme buttons */
+.top-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 5px;
+    z-index: 100;
+}
+
+/* Move #infoButton and #themeButton to the new container in HTML */
+#infoButton {
+    position: static; /* Reset any absolute/fixed positioning */
+}
+
+/* Hover State */
+button:hover,
+.filter-btn:hover,
+#infoButton:hover,
+#invertTimeline:hover,
+#zoomIn:hover,
+#zoomOut:hover,
+#resetTimeline:hover {
+    transform: scale(1.05);
+    background-color: #444;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Active State */
+button:active,
+.filter-btn:active,
+#themeButton:active,
+#infoButton:active,
+#invertTimeline:active,
+#zoomIn:active,
+#zoomOut:active,
+#resetTimeline:active {
+    transform: scale(0.95);
+}
+
+/* Active Filter Button */
+.filter-btn.active {
+    background-color: #0047ab;
+    border-color: #002f6c;
+}
+
+/* Zoom State */
+.zoomed-out .month-label {
+    display: none;
+}
+
+/* Special Button Sizes */
+#invertTimeline {
+    width: auto;
+    padding: 4px 10px;
+    font-size: 12px;
+    text-align: center;
+}
+
+#resetTimeline {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    background-color: #333;
+    border: 2px solid #555;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    text-align: center;
+}

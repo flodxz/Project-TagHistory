@@ -1,0 +1,90 @@
+/* Info Page Styling */
+body {
+    text-align: center;
+}
+
+
+h1 {
+    font-size: 32px;
+    color: white;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1;
+    color: #d2d2d2;
+}
+
+.space {
+    line-height: 1.6;
+}
+
+.spacing {
+    height: 50px;
+}
+
+#discordButton {
+    font-family: 'Minecraft', sans-serif;
+    width: auto;
+    height: 32px;
+    font-size: 12px;
+    background-color: #333;
+    border: 2px solid #555;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin: auto;
+}
+
+#discordButton:hover {
+    transform: scale(1.05);
+    background-color: #444;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+#discordButton:active {
+    transform: scale(0.95);
+    background-color: #555;
+}
+
+
+/* Profile Box Styling */
+.profile-box {
+    display: flex;
+    align-items: center;
+    background-color: #222;
+    border: 2px solid #444;
+    border-radius: 8px;
+    padding: 16px;
+    margin: auto;
+    width: 90%;
+    max-width: 250px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Profile Picture Styling */
+.profile-picture {
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    margin-right: 16px;
+    border: 2px solid #555;
+}
+
+/* Profile Info Styling */
+.profile-info {
+    text-align: left;
+    color: #d2d2d2;
+}
+
+.profile-name {
+    font-size: 18px;
+    color: white;
+    margin: 0;
+    margin-bottom: 8px;
+}

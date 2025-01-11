@@ -1,0 +1,128 @@
+/* Timeline Structure */
+.timeline-section {
+    position: relative;
+    padding: 0px 40px 0px 40px;
+    height: auto;
+    overflow: visible;
+    isolation: isolate;
+    z-index: 1;
+}
+
+.timeline-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    transform: translateZ(0);
+    pointer-events: none;
+    margin-bottom: 20px;
+}
+
+
+.timeline {
+    position: absolute;
+    z-index: 2;
+    width: 5px;
+    background-color: #555555;
+    left: 30px;
+}
+
+.timeline-continuation {
+    position: relative;
+    margin-top: 40px;
+    padding-left: 30px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.timeline-arrow {
+    position: relative;
+    width: 5px;
+    height: 40px;
+    background-color: #555555;
+}
+
+.timeline-arrow::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #555555;
+}
+
+.timeline-inverted .timeline-arrow {
+    transform: rotate(180deg);
+}
+
+.timeline-inverted .timeline-continuation {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    margin-top: 0;
+}
+
+.timeline-inverted .continuation-text {
+    transform: rotate(0deg);
+}
+
+.continuation-text {
+    color: #888;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.timeline-bottom-spacer {
+    height: 100px; /* Extra space after the continuation indicator */
+    width: 100%;
+}
+
+.year-label {
+    position: absolute;
+    left: 7.5px;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: #888;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    /* Ensure labels are above connectors */
+    z-index: 10000;
+}
+
+.month-markers {
+    position: absolute;
+    left: 10px; /* Adjusted to be on the left */
+    top: 0;
+    width: auto;
+    height: 100%;
+}
+
+.month-marker {
+    position: absolute;
+    right: 0;
+    width: 12px;
+    height: 2px;
+    background-color: #666;
+}
+
+.month-label {
+    position: absolute;
+    left: -40px;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.timeline,
+.year-label,
+.month-marker,
+.month-label {
+    pointer-events: auto;
+}

@@ -1,0 +1,117 @@
+/* Filter Styles */
+.filters {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-btn {
+    font-family: "Minecraft", sans-serif;
+    background-color: #333;
+    border: 2px solid #555;
+    color: white;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.filter-btn.active {
+    background-color: #0047ab;
+    border-color: #002f6c;
+}
+
+
+/* Search Structure */
+.search-container {
+    position: relative;
+    width: 200px;
+}
+
+.search-container input {
+    height: 32px;
+    width: 100%;
+    padding: 8px;
+    font-family: "Minecraft", sans-serif;
+    background-color: #333;
+    border: 2px solid #555;
+    color: white;
+    border-radius: 4px;
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
+
+.search-results {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%; /* Match the width of the search container */
+    max-height: 300px;
+    overflow-y: auto;
+    background-color: #333;
+    border: 2px solid #555;
+    border-radius: 4px;
+    margin-top: 5px;
+    z-index: 1000;
+}
+
+.search-result {
+    padding: 8px 10px;
+    border-bottom: 1px solid #444;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.search-result:hover {
+    background-color: #444;
+}
+
+.search-result:last-child {
+    border-bottom: none;
+}
+
+.search-result-title {
+    color: white;
+    font-size: 12px; /* Smaller title */
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.search-result-date {
+    color: #888;
+    font-size: 10px; /* Smaller date */
+}
+
+/* Hide tags in search results */
+.search-result-tags {
+    display: none;
+}
+
+.no-results {
+    padding: 8px 10px;
+    color: #888;
+    text-align: center;
+    font-size: 12px;
+}
+
+/* Category colors in search results */
+.search-result.hypixel { border-left: 3px solid #66ff66; }
+.search-result.feuds { border-left: 3px solid #ff6666; }
+.search-result.guilds { border-left: 3px solid #66f2ff; }
+.search-result.other { border-left: 3px solid #ffffff; }
+
+/* Custom scrollbar for search results */
+.search-results::-webkit-scrollbar {
+    width: 6px;
+}
+
+.search-results::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 3px;
+}
+
+.search-results::-webkit-scrollbar-track {
+    background-color: #333;
+}
+
+

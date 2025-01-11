@@ -1,0 +1,236 @@
+/* Event Styles */
+.event-container {
+    z-index: 2;
+    position: absolute;
+}
+
+.event-container-wrapper {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    pointer-events: none;
+    width: fit-content;
+    max-width: 220px;
+}
+
+.event-card {
+    z-index: 3;
+    position: relative;
+    flex-shrink: 0;
+    background-color: #333;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-left: 20px;
+    cursor: pointer;
+    width: 180px;
+    font-size: var(--event-font-size, 12px);
+    pointer-events: auto;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.event-card:hover {
+    transform: scale(1.05); /* Slightly increase size */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+    background-color: #444; /* Optional: Darken background slightly */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.event-container-wrapper,
+.event-card {
+    pointer-events: auto; /* Ensure clicks are enabled */
+}
+
+.event-title {
+    color: white;
+    margin-bottom: 4px;
+}
+
+.event-date {
+    color: #888;
+    font-size: 0.9em;
+}
+
+
+/* Event Connectors */
+.event-connector {
+    position: absolute;
+    height: 2px;
+    background-color: #555;
+    pointer-events: none;
+    z-index: -1;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.event-connector.vertical-connector {
+    width: 2px;
+    background-color: #7a7a7a;
+    transform: none;
+}
+
+.event-connector.start-connector,
+.event-connector.end-connector {
+    position: absolute;
+    height: 2px;
+    background-color: #7a7a7a;
+    transform: none;
+}
+
+.event-connector.card-connector {
+    position: absolute;
+    height: 2px;
+    background-color: #7a7a7a;
+    transform: none;
+}
+
+.event-container:hover .event-connector {
+    height: 3px; /* Make connectors slightly thicker on hover */
+    background-color: #888; /* Lighter color on hover */
+    transition: all 0.2s ease;
+}
+
+
+.event-container:hover .event-connector.vertical-connector {
+    width: 3px; /* Expanded width */
+    margin-left: -1px;
+}
+
+
+/* Reset any filters/effects that might create stacking contexts */
+.event-container,
+.event-container-wrapper,
+.event-card,
+.event-connector {
+    filter: none;
+    perspective: none;
+    transform-style: flat;
+    backface-visibility: visible;
+    mix-blend-mode: normal;
+    opacity: 1;
+}
+
+
+/* Category Colors */
+.event-card.hypixel { border-left: 3px solid #66ff66; }
+.event-card.feuds { border-left: 3px solid #ff6666; }
+.event-card.guilds { border-left: 3px solid #66f2ff; }
+.event-card.other { border-left: 3px solid #ffffff; }
+.event-card.special {
+    border: 2px solid #ffd700;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+}
+
+
+
+/* Modal Styles */
+/* = Event Info Pop-Up */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background-color: #333;
+    margin: 10% auto;
+    padding: 20px;
+    border: 2px solid #555;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 8px;
+}
+
+.event-details-container {
+    position: relative; /* Ensure relative positioning for child elements */
+    margin-top: 0px;
+    padding: 20px;
+    max-height: 60vh;
+    overflow-y: auto;
+    border: 2px solid #666; /* Card border */
+    border-left: 8px solid var(--category-color, #888); /* Dynamic category color */
+    background-color: #222;
+    color: #fff;
+    border-radius: 8px;
+    width: calc(100%);
+    box-sizing: border-box;
+    white-space: pre-line; /* Preserve multi-line text formatting */
+}
+
+.event-details-container .category-label {
+    position: absolute;
+    top: 10px; /* Space from the top of the card */
+    left: 10px; /* Space from the left edge of the card */
+    background-color: var(--category-color, #888); /* Dynamic color */
+    color: #fff;
+    padding: 2px 8px; /* Padding for a clean look */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 0.9rem;
+    text-transform: capitalize; /* Only capitalize the first letter */
+    font-weight: normal; /* No bold text */
+    box-sizing: border-box;
+}
+
+.event-description-container {
+    margin-top: 20px; /* Space between title and description */
+    padding: 10px; /* Inner padding for text */
+    max-height: 60vh; /* Limit height to avoid overflowing modal */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 2px solid #666; /* Add border around the description box */
+    background-color: #222; /* Match the black box style */
+    color: #fff; /* Text color */
+    border-radius: 8px; /* Slightly rounded corners */
+    width: calc(100%); /* Ensure it fits within modal padding */
+    box-sizing: border-box; /* Include padding/border in width */
+    white-space: pre-line; /* Respect line breaks in text */
+}
+
+/* Optional custom scrollbar for description container */
+.event-description-container::-webkit-scrollbar {
+    width: 8px;
+}
+.event-description-container::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+}
+.event-description-container::-webkit-scrollbar-track {
+    background-color: #333;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px; /* Adjust to fit within the dark box's padding */
+    right: 10px; /* Align with the right padding of the card */
+    background-color: transparent; /* No background for a minimalist look */
+    border: none; /* Remove border */
+    color: #fff; /* Match text color with the card */
+    font-size: 1rem; /* Slightly smaller font for the 'x' */
+    cursor: pointer; /* Pointer cursor for better UX */
+    z-index: 5; /* Ensure it's above other content */
+    padding: 0; /* No padding for tighter alignment */
+    line-height: 1; /* Prevent extra height around the text */
+}
+
+.close-button:hover {
+    color: #ff6666; /* Change color on hover for visibility */
+}
+
+.event-details-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.event-details-container::-webkit-scrollbar-thumb {
+    background-color: #666; /* Dark theme thumb */
+    border-radius: 4px;
+}
+
+.event-details-container::-webkit-scrollbar-track {
+    background-color: #333; /* Darker track for contrast */
+}

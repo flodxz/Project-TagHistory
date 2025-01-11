@@ -1,0 +1,46 @@
+/* Footer Styles */
+footer {
+    background-color: #151515;
+    color: #ffffff;
+    position: sticky;
+    bottom: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px; /* Reduced padding */
+    border-top: 2px solid #505050;
+    margin-top: auto;
+    height: 40px; /* Reduced height */
+    font-size: 12px; /* Smaller text size */
+}
+
+.footer-box {
+    flex: 1;
+    padding: 5px; /* Reduced padding for inner content */
+    font-size: 12px; /* Ensure consistent smaller font size */
+}
+
+.footer-right-content {
+    display: flex;
+    align-items: center; /* Align image and text vertically */
+    gap: 10px; /* Space between the image and text */
+    max-width: auto; /* Ensure it stretches fully */
+}
+
+.footer-right-content img {
+    height: 32px; /* Set the size of the player head */
+    width: 32px;  /* Keep it square */
+    border-radius: 4px; /* Optional: Add rounded corners */
+}
+
+.left-box {
+    text-align: left;
+}
+
+.right-box {
+    text-align: right;
+    display: flex;
+    justify-content: flex-end; /* Align content to the right */
+    align-items: center;
+    gap: 10px; /* Add space between elements */
+}
