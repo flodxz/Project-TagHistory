@@ -122,16 +122,13 @@ export class TimelineManager {
         const container = document.createElement('div');
         container.className = 'timeline-continuation';
         
-        // Add inverted class if timeline is inverted
         if (this.isInverted) {
             container.classList.add('timeline-inverted');
         }
         
-        // Create the arrow
         const arrow = document.createElement('div');
         arrow.className = 'timeline-arrow';
         
-        // Create the text
         const text = document.createElement('div');
         text.className = 'continuation-text';
         text.textContent = 'Time continues...';
@@ -148,46 +145,38 @@ export class TimelineManager {
         timeline.innerHTML = '';
         this.eventRows.clear();
         
-        // Create main timeline elements div to control z-index
         const timelineElements = document.createElement('div');
         timelineElements.className = 'timeline-elements';
-        timelineElements.style.zIndex = '1'; // Ensure markers stay behind events
+        timelineElements.style.zIndex = '1';
         
-        // Create timeline line
         const timelineLine = document.createElement('div');
         timelineLine.className = 'timeline';
         timelineLine.style.height = `${this.calculateTimelineHeight()}px`;
         
-        // Add year and month markers to the timeline elements
         timelineElements.appendChild(this.createYearMarkers());
         timelineElements.appendChild(this.createMonthMarkers());
         timelineElements.appendChild(timelineLine);
         
-        // Add timeline elements first
         timeline.appendChild(timelineElements);
         
-        // Create events container with higher z-index
         const eventsContainer = document.createElement('div');
         eventsContainer.className = 'events-container';
-        eventsContainer.style.zIndex = '2'; // Ensure events stay above markers
+        eventsContainer.style.zIndex = '2';
         
-        // Add events to separate container
         events.forEach(event => {
             const container = this.createEventContainer(event);
             eventsContainer.appendChild(container);
         });
         
-        // Add events container after timeline elements
         timeline.appendChild(eventsContainer);
     
-        // Add continuation indicator
         const continuation = this.createTimelineContinuation();
         if (this.isInverted) {
             continuation.style.top = '0';
         } else {
             continuation.style.top = `${this.calculateTimelineHeight() - 40}px`;
         }
-        continuation.style.zIndex = '2'; // Match events z-index
+        continuation.style.zIndex = '2';
         timeline.appendChild(continuation);
     }
 

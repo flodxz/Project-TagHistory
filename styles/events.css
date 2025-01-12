@@ -1,3 +1,5 @@
+/* styles/events.css */
+
 /* Event Styles */
 .event-container {
     z-index: 2;
@@ -99,7 +101,6 @@
 }
 
 
-/* Reset any filters/effects that might create stacking contexts */
 .event-container,
 .event-container-wrapper,
 .event-card,

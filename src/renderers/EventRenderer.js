@@ -1,4 +1,5 @@
 // src/renderers/EventRenderer.js
+
 export class EventRenderer {
     constructor(timelineManager) {
         this.timelineManager = timelineManager;
@@ -11,7 +12,6 @@ export class EventRenderer {
         const { startPosition, endPosition, row } = this.calculateEventPosition(event);
         const duration = event.end ? Math.abs(endPosition - startPosition) : 0;
         
-        // Position container based on timeline direction
         if (this.timelineManager.isInverted) {
             container.style.top = `${this.timelineManager.calculateTimelineHeight() - endPosition}px`;
         } else {
@@ -30,7 +30,7 @@ export class EventRenderer {
         wrapper.style.marginLeft = `${horizontalOffset}px`;
     
         if (event.end) {
-            // Position vertical connector at the same horizontal offset as the row
+            // Multiple day - event connectors
             const verticalConnectorPosition = baseOffset + (row * incrementOffset);
             
             // Create start connector
@@ -47,7 +47,7 @@ export class EventRenderer {
             endConnector.style.width = `${verticalConnectorPosition - 33}px`;
             endConnector.style.top = `${duration}px`;
             
-            // Create vertical connector at the row's position
+            // Create vertical connector
             const verticalConnector = document.createElement('div');
             verticalConnector.className = 'event-connector vertical-connector';
             verticalConnector.style.left = `${verticalConnectorPosition}px`;
@@ -58,7 +58,7 @@ export class EventRenderer {
             const cardConnector = document.createElement('div');
             cardConnector.className = 'event-connector card-connector';
             cardConnector.style.left = `${verticalConnectorPosition}px`;
-            cardConnector.style.width = `${140}px`; // Fixed width from vertical line to card
+            cardConnector.style.width = `${140}px`;
             
             const midPoint = duration / 2;
             cardConnector.style.top = `${midPoint}px`;
@@ -68,14 +68,14 @@ export class EventRenderer {
             container.appendChild(verticalConnector);
             container.appendChild(cardConnector);
     
-            // Center the event card relative to the duration
             setTimeout(() => {
                 const wrapperHeight = wrapper.offsetHeight;
                 const centerOffset = midPoint - (wrapperHeight / 2);
                 wrapper.style.marginTop = `${centerOffset}px`;
             }, 0);
         } else {
-            // Single event connector
+
+            // Single day - event connector
             const connector = document.createElement('div');
             connector.className = 'event-connector';
             connector.style.left = `${baseOffset - 55}px`;
@@ -118,57 +118,50 @@ export class EventRenderer {
     }
 
     calculateEventPosition(event) {
-    const startPosition = this.timelineManager.calculatePositionForDate(new Date(event.start));
-    const endPosition = event.end ? this.timelineManager.calculatePositionForDate(new Date(event.end)) : startPosition;
-    const duration = event.end ? Math.abs(endPosition - startPosition) : 0;
+        const startPosition = this.timelineManager.calculatePositionForDate(new Date(event.start));
+        const endPosition = event.end ? this.timelineManager.calculatePositionForDate(new Date(event.end)) : startPosition;
+        const duration = event.end ? Math.abs(endPosition - startPosition) : 0;
 
-    // Calculate the overlap window
-    const overlapWindow = this.timelineManager.rowHeight * 1.5; // Increased window to prevent tight stacking
+        const overlapWindow = this.timelineManager.rowHeight * 1.5;
 
-    // Separate arrays for duration and single events
-    const durationEvents = [];
-    const singleEvents = [];
+        const durationEvents = [];
+        const singleEvents = [];
 
-    // Safeguard against undefined or invalid events array
-    if (!Array.isArray(this.timelineManager.events)) {
-        console.error('timelineManager.events is not an array or is undefined:', this.timelineManager.events);
-        return { startPosition, endPosition, duration, row: 0 };
-    }
-
-    // Filter through all events to determine overlap
-    this.timelineManager.events.forEach(e => {
-        const eStart = this.timelineManager.calculatePositionForDate(new Date(e.start));
-        const eEnd = e.end ? this.timelineManager.calculatePositionForDate(new Date(e.end)) : eStart;
-
-        // Check if events overlap
-        if (
-            Math.abs(eStart - startPosition) < overlapWindow || 
-            (e.end && (
-                (eStart <= startPosition && eEnd >= startPosition) ||
-                (eStart <= endPosition && eEnd >= endPosition)
-            ))
-        ) {
-            if (e.end) {
-                durationEvents.push(e);
-            } else {
-                singleEvents.push(e);
-            }
+        if (!Array.isArray(this.timelineManager.events)) {
+            console.error('timelineManager.events is not an array or is undefined:', this.timelineManager.events);
+            return { startPosition, endPosition, duration, row: 0 };
         }
-    });
 
-    // Calculate row based on position in respective array
-    let row;
-    if (event.end) {
-        row = durationEvents.indexOf(event);
-    } else {
-        row = durationEvents.length + singleEvents.indexOf(event);
+        this.timelineManager.events.forEach(e => {
+            const eStart = this.timelineManager.calculatePositionForDate(new Date(e.start));
+            const eEnd = e.end ? this.timelineManager.calculatePositionForDate(new Date(e.end)) : eStart;
+
+            if (
+                Math.abs(eStart - startPosition) < overlapWindow || 
+                (e.end && (
+                    (eStart <= startPosition && eEnd >= startPosition) ||
+                    (eStart <= endPosition && eEnd >= endPosition)
+                ))
+            ) {
+                if (e.end) {
+                    durationEvents.push(e);
+                } else {
+                    singleEvents.push(e);
+                }
+            }
+        });
+
+        let row;
+        if (event.end) {
+            row = durationEvents.indexOf(event);
+        } else {
+            row = durationEvents.length + singleEvents.indexOf(event);
+        }
+
+        this.timelineManager.eventRows.set(event, row);
+
+        return { startPosition, endPosition, duration, row };
     }
-
-    // Update row mapping for the event
-    this.timelineManager.eventRows.set(event, row);
-
-    return { startPosition, endPosition, duration, row };
-}
 
     formatDate(dateString) {
         const date = new Date(dateString);

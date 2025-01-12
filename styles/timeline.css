@@ -1,3 +1,5 @@
+/* styles/timeline.css */
+
 /* Timeline Structure */
 .timeline-section {
     position: relative;
@@ -78,7 +80,7 @@
 }
 
 .timeline-bottom-spacer {
-    height: 100px; /* Extra space after the continuation indicator */
+    height: 100px;
     width: 100%;
 }
 
@@ -91,13 +93,12 @@
     padding: 4px 8px;
     border-radius: 4px;
     font-size: 14px;
-    /* Ensure labels are above connectors */
     z-index: 10000;
 }
 
 .month-markers {
     position: absolute;
-    left: 10px; /* Adjusted to be on the left */
+    left: 10px;
     top: 0;
     width: auto;
     height: 100%;

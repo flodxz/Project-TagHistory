@@ -1,4 +1,5 @@
 // src/managers/SearchManager.js
+
 export class SearchManager {
     constructor(timelineManager) {
         this.timelineManager = timelineManager;
@@ -40,7 +41,7 @@ export class SearchManager {
             searchResultsContainer.style.display = 'block';
         }
 
-        // Apply filters while maintaining event positioning
+        // NEED WORK ON THIS
         this.timelineManager.filterManager.applyFiltersWithOverlap();
     }
 

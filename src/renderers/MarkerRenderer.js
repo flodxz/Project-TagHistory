@@ -1,4 +1,5 @@
 // src/renderers/MarkerRenderer.js
+
 export class MarkerRenderer {
     constructor(timelineManager) {
         this.timelineManager = {events: []};
@@ -9,7 +10,6 @@ export class MarkerRenderer {
         const yearMarkers = document.createElement('div');
         yearMarkers.className = 'year-markers';
         
-        // Access dates from the timelineManager
         const startDate = this.timelineManager.startDate;
         const endDate = this.timelineManager.endDate;
         
@@ -40,7 +40,6 @@ export class MarkerRenderer {
         const markers = document.createElement('div');
         markers.className = 'month-markers';
         
-        // Access dates from the timelineManager
         const startDate = this.timelineManager.startDate;
         const endDate = this.timelineManager.endDate;
         

@@ -1,4 +1,5 @@
 // src/managers/UIManager.js
+
 import { generateCategoryDropdown, injectCategoryStyles } from '../utils/categoryUI.js';
 import { getCategoryColor, getCategoryName } from '../config/categories.js';
 

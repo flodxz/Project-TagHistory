@@ -29,15 +29,14 @@ export const categories = {
     special: {
         name: 'Special',
         color: '#ffd700',
-        border: '2px solid', // Ensures the base border is applied
+        border: '2px solid',
         extraStyles: {
-            border: '2px solid #ffd700', // Full yellow border
-            zIndex: 10, // Ensures special events are on top
+            border: '2px solid #ffd700',
+            zIndex: 10,
         },
     },
 };
 
-// Utility functions for working with categories
 export const getCategoryColor = (categoryId) => {
     return categories[categoryId]?.color || '#888';
 };
@@ -53,7 +52,6 @@ export const getAllCategories = () => {
     }));
 };
 
-// Generate dynamic category styles
 export const generateCategoryStyles = () => {
     return Object.entries(categories).map(([categoryId, config]) => `
         .event-card.${categoryId} { 
@@ -77,12 +75,10 @@ export const generateCategoryStyles = () => {
     `).join('\n');
 };
 
-// Inject styles dynamically into the DOM
 export const injectCategoryStyles = () => {
     const styleElement = document.createElement('style');
     styleElement.textContent = generateCategoryStyles();
     document.head.appendChild(styleElement);
 };
 
-// Automatically inject styles when this file is loaded
 injectCategoryStyles();

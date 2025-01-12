@@ -1,3 +1,5 @@
+/* styles/footer.css */
+
 /* Footer Styles */
 footer {
     background-color: #151515;
@@ -7,30 +9,30 @@ footer {
     z-index: 100;
     display: flex;
     justify-content: space-between;
-    padding: 10px 15px; /* Reduced padding */
+    padding: 10px 15px;
     border-top: 2px solid #505050;
     margin-top: auto;
-    height: 40px; /* Reduced height */
-    font-size: 12px; /* Smaller text size */
+    height: 40px;
+    font-size: 12px;
 }
 
 .footer-box {
     flex: 1;
-    padding: 5px; /* Reduced padding for inner content */
-    font-size: 12px; /* Ensure consistent smaller font size */
+    padding: 5px;
+    font-size: 12px;
 }
 
 .footer-right-content {
     display: flex;
-    align-items: center; /* Align image and text vertically */
-    gap: 10px; /* Space between the image and text */
-    max-width: auto; /* Ensure it stretches fully */
+    align-items: center;
+    gap: 10px;
+    max-width: auto;
 }
 
 .footer-right-content img {
-    height: 32px; /* Set the size of the player head */
-    width: 32px;  /* Keep it square */
-    border-radius: 4px; /* Optional: Add rounded corners */
+    height: 32px;
+    width: 32px;
+    border-radius: 4px;
 }
 
 .left-box {
@@ -40,7 +42,7 @@ footer {
 .right-box {
     text-align: right;
     display: flex;
-    justify-content: flex-end; /* Align content to the right */
+    justify-content: flex-end;
     align-items: center;
-    gap: 10px; /* Add space between elements */
+    gap: 10px;
 }

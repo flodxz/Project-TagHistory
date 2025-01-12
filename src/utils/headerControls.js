@@ -1,3 +1,5 @@
+// src/utils/headerControls.js
+
 document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.querySelector('.dropdown');
     const dropdownHeader = dropdown.querySelector('.dropdown-header');
@@ -5,17 +7,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const label = dropdownHeader.querySelector('.label');
     const items = dropdown.querySelectorAll('.dropdown-item');
 
-    let selectedValues = ['all']; // Default selection
+    let selectedValues = ['all'];
 
     label.textContent = 'Categories...';
 
-    // Toggle dropdown visibility
     dropdownHeader.addEventListener('click', () => {
         dropdownHeader.classList.toggle('active');
         dropdownMenu.style.display = dropdownHeader.classList.contains('active') ? 'block' : 'none';
     });
 
-    // Handle item selection
     items.forEach(item => {
         item.addEventListener('click', () => {
             const value = item.dataset.value;

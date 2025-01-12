@@ -1,3 +1,5 @@
+/* styles/search.css */
+
 /* Filter Styles */
 .filters {
     display: flex;
@@ -35,17 +37,14 @@
     border: 2px solid #555;
     color: white;
     border-radius: 4px;
-    box-sizing: border-box; /* Ensures padding and border are included in the width */
+    box-sizing: border-box;
 
-    /* Remove focus outline */
     outline: none;
-
-    /* Optional: Change border color on focus */
     transition: border-color 0.2s ease;
 }
 
 .search-container input:focus {
-    border-color: #888; /* Subtle color change for focus */
+    border-color: #888;
 }
 
 .search-results {
@@ -53,7 +52,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%; /* Match the width of the search container */
+    width: 100%;
     max-height: 300px;
     overflow-y: auto;
     background-color: #333;
@@ -80,7 +79,7 @@
 
 .search-result-title {
     color: white;
-    font-size: 12px; /* Smaller title */
+    font-size: 12px;
     margin-bottom: 2px;
     white-space: nowrap;
     overflow: hidden;
@@ -89,7 +88,7 @@
 
 .search-result-date {
     color: #888;
-    font-size: 10px; /* Smaller date */
+    font-size: 10px;
 }
 
 /* Hide tags in search results */

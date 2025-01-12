@@ -1,5 +1,7 @@
+/* styles/base.css */
+
 :root {
-    --footer-height: 64px; /* Adjusted to match the actual footer height */
+    --footer-height: 64px;
 }
 
 /* Base Styles */
@@ -33,11 +35,12 @@ main::-webkit-scrollbar {
     display: none;
 }
 
-/* Optional: Hide scrollbar for IE, Edge and Firefox */
+
 main {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
 
 /* Global Scrollbar Styles */
 * {
@@ -67,7 +70,6 @@ main {
 *::-webkit-scrollbar-thumb:active {
     background-color: #777; 
 }
-
 
 
 /* Light Theme Styles */
