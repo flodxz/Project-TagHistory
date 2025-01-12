@@ -39,22 +39,33 @@ main {
     scrollbar-width: none;  /* Firefox */
 }
 
-/* Show scrollbar only when scrolling */
-main:hover::-webkit-scrollbar,
-main:active::-webkit-scrollbar {
-    display: block;
-    width: 8px;
+/* Global Scrollbar Styles */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #555 #333;
 }
 
-main:hover::-webkit-scrollbar-thumb,
-main:active::-webkit-scrollbar-thumb {
+*::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+*::-webkit-scrollbar-thumb {
     background-color: #555;
     border-radius: 4px;
 }
 
-main:hover::-webkit-scrollbar-track,
-main:active::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
     background-color: #333;
+}
+
+/* Optional hover/active styles for better UX */
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+}
+
+*::-webkit-scrollbar-thumb:active {
+    background-color: #777; 
 }
 
 

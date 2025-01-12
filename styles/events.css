@@ -31,15 +31,15 @@
 }
 
 .event-card:hover {
-    transform: scale(1.05); /* Slightly increase size */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
-    background-color: #444; /* Optional: Darken background slightly */
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    background-color: #444;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .event-container-wrapper,
 .event-card {
-    pointer-events: auto; /* Ensure clicks are enabled */
+    pointer-events: auto;
 }
 
 .event-title {
@@ -87,14 +87,14 @@
 }
 
 .event-container:hover .event-connector {
-    height: 3px; /* Make connectors slightly thicker on hover */
-    background-color: #888; /* Lighter color on hover */
+    height: 3px;
+    background-color: #888;
     transition: all 0.2s ease;
 }
 
 
 .event-container:hover .event-connector.vertical-connector {
-    width: 3px; /* Expanded width */
+    width: 3px;
     margin-left: -1px;
 }
 
@@ -113,18 +113,6 @@
 }
 
 
-/* Category Colors */
-.event-card.hypixel { border-left: 3px solid #66ff66; }
-.event-card.feuds { border-left: 3px solid #ff6666; }
-.event-card.guilds { border-left: 3px solid #66f2ff; }
-.event-card.other { border-left: 3px solid #ffffff; }
-.event-card.special {
-    border: 2px solid #ffd700;
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
-}
-
-
-
 /* Modal Styles */
 /* = Event Info Pop-Up */
 .modal {
@@ -141,96 +129,53 @@
 .modal-content {
     background-color: #333;
     margin: 10% auto;
-    padding: 20px;
+    padding: 10px;
     border: 2px solid #555;
     width: 100%;
-    max-width: 800px;
+    max-width: 700px;
     border-radius: 8px;
 }
 
 .event-details-container {
-    position: relative; /* Ensure relative positioning for child elements */
+    position: relative;
     margin-top: 0px;
     padding: 20px;
     max-height: 60vh;
     overflow-y: auto;
-    border: 2px solid #666; /* Card border */
-    border-left: 8px solid var(--category-color, #888); /* Dynamic category color */
+    border: 2px solid #666;
+    border-left: 8px solid var(--category-color, #888);
     background-color: #222;
     color: #fff;
     border-radius: 8px;
     width: calc(100%);
     box-sizing: border-box;
-    white-space: pre-line; /* Preserve multi-line text formatting */
+    white-space: pre-line;
 }
 
 .event-details-container .category-label {
     position: absolute;
-    top: 10px; /* Space from the top of the card */
-    left: 10px; /* Space from the left edge of the card */
-    background-color: var(--category-color, #888); /* Dynamic color */
+    top: 10px;
+    left: 10px;
+    background-color: var(--category-color, #888);
     color: #fff;
-    padding: 2px 8px; /* Padding for a clean look */
-    border-radius: 4px; /* Rounded corners */
+    padding: 2px 8px;
+    border-radius: 4px;
     font-size: 0.9rem;
-    text-transform: capitalize; /* Only capitalize the first letter */
-    font-weight: normal; /* No bold text */
+    text-transform: capitalize;
+    font-weight: normal;
     box-sizing: border-box;
 }
 
 .event-description-container {
-    margin-top: 20px; /* Space between title and description */
-    padding: 10px; /* Inner padding for text */
-    max-height: 60vh; /* Limit height to avoid overflowing modal */
-    overflow-y: auto; /* Enable vertical scrolling */
-    border: 2px solid #666; /* Add border around the description box */
-    background-color: #222; /* Match the black box style */
-    color: #fff; /* Text color */
-    border-radius: 8px; /* Slightly rounded corners */
-    width: calc(100%); /* Ensure it fits within modal padding */
-    box-sizing: border-box; /* Include padding/border in width */
-    white-space: pre-line; /* Respect line breaks in text */
-}
-
-/* Optional custom scrollbar for description container */
-.event-description-container::-webkit-scrollbar {
-    width: 8px;
-}
-.event-description-container::-webkit-scrollbar-thumb {
-    background-color: #555;
-    border-radius: 4px;
-}
-.event-description-container::-webkit-scrollbar-track {
-    background-color: #333;
-}
-
-.close-button {
-    position: absolute;
-    top: 10px; /* Adjust to fit within the dark box's padding */
-    right: 10px; /* Align with the right padding of the card */
-    background-color: transparent; /* No background for a minimalist look */
-    border: none; /* Remove border */
-    color: #fff; /* Match text color with the card */
-    font-size: 1rem; /* Slightly smaller font for the 'x' */
-    cursor: pointer; /* Pointer cursor for better UX */
-    z-index: 5; /* Ensure it's above other content */
-    padding: 0; /* No padding for tighter alignment */
-    line-height: 1; /* Prevent extra height around the text */
-}
-
-.close-button:hover {
-    color: #ff6666; /* Change color on hover for visibility */
-}
-
-.event-details-container::-webkit-scrollbar {
-    width: 8px;
-}
-
-.event-details-container::-webkit-scrollbar-thumb {
-    background-color: #666; /* Dark theme thumb */
-    border-radius: 4px;
-}
-
-.event-details-container::-webkit-scrollbar-track {
-    background-color: #333; /* Darker track for contrast */
+    margin-top: 20px;
+    padding: 10px;
+    max-height: 60vh;
+    overflow-y: auto;
+    border: 2px solid #666;
+    background-color: #222;
+    color: #fff;
+    border-radius: 8px;
+    width: calc(100%);
+    box-sizing: border-box;
+    white-space: pre-line;
 }

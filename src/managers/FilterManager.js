@@ -41,18 +41,17 @@ export class FilterManager {
     applyFiltersWithOverlap() {
         const visibleEvents = new Map();
         const containers = document.querySelectorAll('.event-container');
-
-        // First pass: determine visibility
+    
         containers.forEach(container => {
             const card = container.querySelector('.event-card');
             const eventTitle = card.querySelector('.event-title').textContent;
             const event = this.timelineManager.events.find(e => e.title === eventTitle);
-
+    
             const matchesFilter = this.activeFilters.includes('all') ||
                 this.activeFilters.some(filter => card.classList.contains(filter));
             const matchesSearch = !this.timelineManager.searchManager.searchTerm ||
                 (event && this.timelineManager.searchManager.searchEvent(event, this.timelineManager.searchManager.searchTerm));
-
+    
             if (matchesFilter && matchesSearch) {
                 container.style.display = 'flex';
                 if (event) {
@@ -62,16 +61,29 @@ export class FilterManager {
                 container.style.display = 'none';
             }
         });
-
-        // Sort visible events by start date
+    
         const sortedEvents = Array.from(visibleEvents.keys())
             .sort((a, b) => new Date(a.start) - new Date(b.start));
-
-        // Apply positioning with overlap handling
+    
         this.positionEventsWithOverlap(sortedEvents, visibleEvents);
     }
 
-    
+    resetVerticalStacking() {
+    const containers = document.querySelectorAll('.event-container');
+    const visibleEvents = new Map();
+
+    // Collect visible events
+    containers.forEach(container => {
+        if (container.style.display !== 'none') {
+            const eventTitle = container.querySelector('.event-title').textContent;
+            const event = this.timelineManager.events.find(e => e.title === eventTitle);
+            if (event) visibleEvents.set(event, container);
+        }
+    });
+
+    // Recalculate rows and positions
+    this.resetAndRecalculateRows(visibleEvents);
+}
 
     resetAndRecalculateRows(visibleEvents) {
         // Clear existing row assignments

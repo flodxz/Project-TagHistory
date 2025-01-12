@@ -19,46 +19,49 @@ export class UIManager {
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.addEventListener('click', () => this.timelineManager.handleFilter(btn));
         });
-
+    
         const searchInput = document.getElementById('searchInput');
-    const searchResultsContainer = document.createElement('div');
-    searchResultsContainer.className = 'search-results';
-    searchInput.parentElement.appendChild(searchResultsContainer);
-
-    // Add ESC key handler
-    searchInput.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            this.timelineManager.searchManager.clearSearch(searchResultsContainer);
-        }
-    });
-
-    // Debounce search to improve performance
-    let searchTimeout;
-    searchInput.addEventListener('input', (e) => {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => {
-            this.timelineManager.handleSearch(e.target.value);
-        }, 300);
-    });
-
+        const searchResultsContainer = document.createElement('div');
+        searchResultsContainer.className = 'search-results';
+        searchInput.parentElement.appendChild(searchResultsContainer);
+    
+        // Add ESC key handler
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                this.timelineManager.searchManager.clearSearch(searchResultsContainer);
+            }
+        });
+    
+        // Debounce search to improve performance
+        let searchTimeout;
+        searchInput.addEventListener('input', (e) => {
+            clearTimeout(searchTimeout);
+            searchTimeout = setTimeout(() => {
+                this.timelineManager.handleSearch(e.target.value);
+            }, 300);
+        });
+    
         // Close search results when clicking outside
         document.addEventListener('click', (e) => {
             if (!searchInput.contains(e.target) && !searchResultsContainer.contains(e.target)) {
                 searchResultsContainer.style.display = 'none';
             }
         });
-
+    
         const modal = document.getElementById('eventModal');
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
                 modal.style.display = 'none';
             }
         });
-
-        document.querySelector('.close-button').addEventListener('click', () => {
-            document.getElementById('eventModal').style.display = 'none';
+    
+        // Ensure we dynamically add a close button event listener
+        modal.addEventListener('click', (e) => {
+            if (e.target.classList.contains('close-button')) {
+                modal.style.display = 'none';
+            }
         });
-
+    
         // Add event listener for timeline inversion
         document.getElementById('invertTimeline').addEventListener('click', () => {
             this.timelineManager.invertTimeline();
@@ -91,16 +94,17 @@ export class UIManager {
     showEventDetails(event) {
         const modal = document.getElementById('eventModal');
         const modalBody = modal.querySelector('.modal-body');
-    
         const categoryColor = getCategoryColor(event.category);
     
         const detailsContainer = document.createElement('div');
         detailsContainer.className = 'event-details-container';
         detailsContainer.style.setProperty('--category-color', categoryColor);
     
+        // Create the close button
         const closeButton = document.createElement('button');
-        closeButton.className = 'close-button';
-        closeButton.textContent = 'x';
+        closeButton.id = 'closeModalButton'; // Unique ID for easier targeting
+        closeButton.className = 'modal-close-btn';
+        closeButton.textContent = '×'; // Unicode for close (x)
         closeButton.addEventListener('click', () => {
             modal.style.display = 'none';
         });
@@ -122,7 +126,7 @@ export class UIManager {
         `.trim();
     
         detailsContainer.innerHTML = title + description;
-        detailsContainer.appendChild(closeButton);
+        detailsContainer.prepend(closeButton); // Ensure the button is inside the modal content
         detailsContainer.appendChild(categoryLabel);
     
         modalBody.innerHTML = '';

@@ -109,7 +109,7 @@ export class EventRenderer {
         date.textContent = this.formatDate(event.start);
         
         if (event.end) {
-            date.textContent += ` - ${this.formatDate(event.end)}`;
+            date.innerHTML += `<br> - ${this.formatDate(event.end)}`;
         }
 
         card.append(title, date);

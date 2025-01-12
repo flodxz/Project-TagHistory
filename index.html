@@ -35,10 +35,7 @@
         document.addEventListener('DOMContentLoaded', () => timelineManager.initialize());
     </script>
 
-    <script src="src/utils/themeToggle.js" defer></script>
     <script src="src/utils/headerControls.js" defer></script>
-
-
 </head>
 <body>
     <header>
@@ -83,10 +80,10 @@
             <div class="timeline-section">
 
                 <div class="controls">
-                    <button id="invertTimeline">↑</button>
+                    <button id="invertTimeline">i</button>
                     <button id="zoomIn">+</button>
                     <button id="zoomOut">-</button>
-                    <button id="resetTimeline">↯</button>
+                    <button id="resetTimeline">r</button>
                 </div>
 
                 <div class="timeline-container">
@@ -103,7 +100,6 @@
     
     <div id="eventModal" class="modal">
         <div class="modal-content">
-            <span class="close-button">&times;</span>
             <div class="modal-body"></div>
         </div>
     </div>

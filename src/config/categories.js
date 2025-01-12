@@ -11,6 +11,11 @@ export const categories = {
         color: '#ff6666',
         borderStyle: '3px solid',
     },
+    bomboclaat: { 
+        name: 'Bomboclaat',
+        color: '#ff66ff',
+        borderStyle: '3px solid',
+    },
     guilds: {
         name: 'Guilds',
         color: '#66f2ff',
@@ -24,11 +29,12 @@ export const categories = {
     special: {
         name: 'Special',
         color: '#ffd700',
-        borderStyle: '2px solid',
+        border: '2px solid', // Ensures the base border is applied
         extraStyles: {
-            boxShadow: '0 0 10px rgba(255, 215, 0, 0.2)'
-        }
-    }
+            border: '2px solid #ffd700', // Full yellow border
+            zIndex: 10, // Ensures special events are on top
+        },
+    },
 };
 
 // Utility functions for working with categories
@@ -47,14 +53,36 @@ export const getAllCategories = () => {
     }));
 };
 
+// Generate dynamic category styles
 export const generateCategoryStyles = () => {
     return Object.entries(categories).map(([categoryId, config]) => `
         .event-card.${categoryId} { 
-            border-left: ${config.borderStyle || '3px solid'} ${config.color};
-            ${config.extraStyles ? Object.entries(config.extraStyles).map(([prop, value]) => `${prop}: ${value};`).join('\n') : ''}
+            ${categoryId === 'special' 
+                ? `border: ${config.extraStyles?.border || '2px solid #ffd700'};
+                   box-shadow: 0 0 2px rgba(255, 215, 0, 0.5), 
+                               0 0 5px rgba(255, 215, 0, 0.4); 
+                   z-index: ${config.extraStyles?.zIndex || 10};` 
+                : `border-left: ${config.borderStyle || '3px solid'} ${config.color};`
+            }
         }
         .search-result.${categoryId} { 
-            border-left: ${config.borderStyle || '3px solid'} ${config.color}; 
+            ${categoryId === 'special'
+                ? `border: ${config.extraStyles?.border || '2px solid #ffd700'};
+                   box-shadow: 0 0 2px rgba(255, 215, 0, 0.5), 
+                               0 0 5px rgba(255, 215, 0, 0.4); 
+                   z-index: ${config.extraStyles?.zIndex || 10};`
+                : `border-left: ${config.borderStyle || '3px solid'} ${config.color};`
+            }
         }
     `).join('\n');
 };
+
+// Inject styles dynamically into the DOM
+export const injectCategoryStyles = () => {
+    const styleElement = document.createElement('style');
+    styleElement.textContent = generateCategoryStyles();
+    document.head.appendChild(styleElement);
+};
+
+// Automatically inject styles when this file is loaded
+injectCategoryStyles();

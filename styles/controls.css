@@ -60,23 +60,23 @@ button,
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%; /* Match dropdown width to header */
+    width: 100%;
     background-color: #333;
     border: 2px solid #555;
     border-radius: 4px;
     margin-top: 5px;
     z-index: 1000;
-    max-height: 200px; /* Limit dropdown height */
-    overflow-y: auto; /* Add scrolling for long lists */
-    list-style: none; /* Remove default bullet points */
-    padding: 0; /* Remove default padding */
+    max-height: 300px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
 }
 
 .dropdown-item {
     padding: 8px;
     color: white;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: border-color 0.3s ease, background-color 0.2s;
     text-align: left;
     font-family: 'Minecraft', sans-serif;
     font-size: 14px;
@@ -87,7 +87,7 @@ button,
 }
 
 .dropdown-item.selected {
-    background-color: #292929; /* Highlight selected item */
+    background-color: #292929;
     border-left: 3px solid #1a1a1a;
 }
 
@@ -139,7 +139,7 @@ button,
 
 /* Move #infoButton and #themeButton to the new container in HTML */
 #infoButton {
-    position: static; /* Reset any absolute/fixed positioning */
+    position: static;
 }
 
 /* Hover State */
@@ -196,4 +196,36 @@ button:active,
     cursor: pointer;
     border-radius: 4px;
     text-align: center;
+}
+
+
+.modal-close-btn {
+    font-family: 'Minecraft', sans-serif;
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    background-color: #333;
+    border: 2px solid #555;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute; /* Position at top-right of the modal content */
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close-btn:hover {
+    transform: scale(1.05);
+    background-color: #444;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-close-btn:active {
+    transform: scale(0.95);
 }
