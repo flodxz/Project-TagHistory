@@ -4,7 +4,7 @@ function checkPassword(event) {
     const correctPassword = 'test';
     
     if (password === correctPassword) {
-        window.location.href = 'timeline.html';
+        window.location.href = '/timeline';
     } else {
         document.getElementById('errorMessage').style.display = 'block';
         document.getElementById('passwordInput').value = '';
