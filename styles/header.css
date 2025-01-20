@@ -6,17 +6,32 @@ header {
     color: white;
     padding: 15px 20px;
     border-bottom: 2px solid #505050;
-    display: flex;
+    height: 30px;
     flex-direction: column;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    line-height: 30px;
+    height: 100%;
+}
+
 .header-right {
     display: flex;
     align-items: center;
     gap: 5px;
+}
+
+.header-left h1, 
+.header-left span {
+    margin: 0;
+    font-size: inherit;
 }
 
 .header-content {

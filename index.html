@@ -8,17 +8,15 @@
 	<meta property="og:title" content="TNT Tag History" />
 	<meta property="og:description" content="An interactive journey through the TNT Tag History" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Timeline - TNT Tag History</title>
+    <title>TNT Tag History - Password Protected</title>
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles/base.css">
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/footer.css">
 
-    <link rel="stylesheet" href="styles/timeline.css">
-    <link rel="stylesheet" href="styles/events.css">
 
-    <link rel="stylesheet" href="styles/search.css">
+    <link rel="stylesheet" href="styles/password.css">
     <link rel="stylesheet" href="styles/controls.css">
 
     <link rel="stylesheet" href="styles/fonts.css">
@@ -27,100 +25,51 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <!-- Scripts -->
-    <script type="module" src="./events.js"></script>
+    <script src="src/utils/password.js" defer></script>
 
-    <script type="module">
-        import { TimelineManager } from '../src/TimelineManager.js';
-        const timelineManager = new TimelineManager();
-        document.addEventListener('DOMContentLoaded', () => timelineManager.initialize());
-    </script>
+    <body>
 
-    <script src="src/utils/headerControls.js" defer></script>
-</head>
-<body>
-
-    <!-- Header -->
-    <header>
-        <div class="header-content">
-            TNT Tag History
-            <div class="header-right">
-
-                <div class="dropdown">
-                    <div class="dropdown-header">
-                        <span class="label">Categories...</span>
-                        <span class="caret"></span>
-                    </div>
-                    <ul class="dropdown-menu">
-                        <li class="dropdown-item selected" data-value="all">All Events</li>
-                        <li class="dropdown-item" data-value="hypixel">Hypixel</li>
-                        <li class="dropdown-item" data-value="feuds">Feuds</li>
-                        <li class="dropdown-item" data-value="guilds">Guilds</li>
-                        <li class="dropdown-item" data-value="other">Other</li>
-                    </ul>
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <div class="header-left">
+                    TNT Tag History
                 </div>
-
-                <div class="search-container">
-                    <input type="text" id="searchInput" placeholder="Search events...">
-                </div>
-
-                <a href="info.html">
-                    <button id="infoButton">Info</button>
-                </a>
             </div>
-        </div>
-    </header>
-
-    <!-- Main content -->
-    <main>
-
+        </header>
+    
         <div id="info-box">
-            Version: Beta 1.0
+                Version: Beta 1.0
         </div>
-
-        <div class="timeline"></div>
-
-        <!-- NEED WORK ON THIS -->
-        <div class="content-wrapper">
-            <div class="timeline-section">
-
-                <div class="controls">
-                    <button id="invertTimeline">i</button>
-                    <button id="zoomIn">+</button>
-                    <button id="zoomOut">-</button>
-                    <button id="resetTimeline">r</button>
-                </div>
-
-                <div class="timeline-container">
-                    <div class="timeline"></div>
-                    <div class="year-labels"></div>
-                </div>
+    
+        <!-- Main content -->
+        <main>
+            <div class="login-container">
+                <form id="passwordForm" onsubmit="return checkPassword(event)">
+                    <input type="password" id="passwordInput" placeholder="Enter password..." required>
+                    <button type="submit" id="enterButton">Enter</button>
+                </form>
+                <div id="errorMessage" class="error-message">Incorrect password</div>
             </div>
-        </div>
-
-        <div id="eventModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-body"></div>
+        </main>
+    
+        <!-- Footer -->
+        <footer>
+            <div class="footer-box left-box">
+                 WORK IN PROGRESS (!)<br>
+                &copy; 2025 TNT Tag History
             </div>
-        </div>
-
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-box left-box">
-             WORK IN PROGRESS (!)<br>
-            &copy; 2025 TNT Tag History
-        </div>
-        <div class="footer-box right-box">
-            <div class="footer-right-content">
-                <div>
-                    Created by flodlol
-                    <br>
-                    @<b>.flod</b>
+            <div class="footer-box right-box">
+                <div class="footer-right-content">
+                    <div>
+                        Created by flodlol
+                        <br>
+                        @<b>.flod</b>
+                    </div>
                 </div>
             </div>
-        </div>
-    </footer>
-
-</body>
-</html>
+        </footer>
+    
+    
+    </body>
+    </html>
