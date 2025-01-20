@@ -28,15 +28,6 @@
     <!-- Scripts -->
     <script src="src/utils/headerControls.js" defer></script>
 
-    <script type="module">
-        import { isPasswordProtectionEnabled, isAuthenticated } from './src/utils/config.js';
-        
-        // Check authentication
-        if (isPasswordProtectionEnabled() && !isAuthenticated()) {
-            window.location.href = '/password';
-        }
-    </script>
-
 </head>
 <body>
 
